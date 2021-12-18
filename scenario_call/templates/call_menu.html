@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIVLERITE: Редактор услуг</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+    <div class="header">
+        <h1>Редактор услуг</h1>
+    </div>
+    <div class="main">
+        <div class="bg-outer">
+            <div class="bg-inner">
+                <div class="list-table-test">
+                    {% if services %}
+                    <table>
+                        {% for head in heads %}
+                        <th>{{ head }}</th>
+                        {% endfor %}
+                        {% for service in services %}
+                            <tr>
+                                <td>{{ service['service_name']}}</td>
+                                <td>{{ service['service_cost']}}</td>
+                                <td>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="service_id" value="{{ service['id_service']}}">
+                                        <input type="submit" name="action" value="Удалить">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                        <p>Нет доступных услуг</p>
+                    {% endif %}
+                </div><br>
+                <div class="list">
+                    <i class="fa fa-plus"></i>
+                    <a href='/call/edit'>Добавить заказ</a>
+                </div>
+                <div class="list">
+                    <i class="fa fa-arrow-left"></i>
+                    <a href="/auth/admin">Вернуться в главное меню</a>
+                </div>
+            </div>
+        </div>
+        <p>Создано студентом МГТУ им. Баумана, Москва, 2021.</p>
+        <p>Font: Copyright (c) 2010 by Anton Kudin. All rights reserved.</p>
+    </div>
+</body>
+</html>

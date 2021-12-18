@@ -1,0 +1,1 @@
+INSERT INTO service VALUES ('$param1', '$param2', '$param3')
